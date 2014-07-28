@@ -1,0 +1,7 @@
+pygments: true
+permalink: /blog/:year/:month/:day/:title
+markdown: rdiscount
+exclude: ['.git']
+name: "sukru bezen's blog"
+description: "sukru bezen's blog"
+url: http://skr.github.io/personal_site
