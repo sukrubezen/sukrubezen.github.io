@@ -12,7 +12,8 @@ In the literature, this was called "Connection Tracking".
 I used [conntrack] as a connection tracking tool. When I executed ```conntrack -E``` I could see ongoing connections. Output was like:
 
 ```
-[DESTROY] udp      17 src=192.168.0.22 dst=192.168.0.255 sport=138 dport=138 packets=1 bytes=241 [UNREPLIED] src=192.168.0.255 dst=192.168.0.22 sport=138 dport=138 packets=0 bytes=0
+[DESTROY] udp      17 src=192.168.0.22 dst=192.168.0.255 sport=138 dport=138 packets=1 bytes=241 
+[UNREPLIED] src=192.168.0.255 dst=192.168.0.22 sport=138 dport=138 packets=0 bytes=0
 ```
 
 The conntrack was providing me nearly all of the information I wanted to fetch except the time value but I will be talking about this after a while. 
@@ -37,7 +38,8 @@ The way ulogd's plugins work are like flows, think about water flowing through p
 I used NFCT as an input plugin and PRINTFLOW as the output plugin. What PRINTFLOW gave as a output was:
 
 ```
-Oct 16 14:15:54 lothlorien [DESTROY] ORIG: SRC=192.168.0.170 DST=255.255.255.255 PROTO=UDP SPT=17500 DPT=17500 PKTS=9 BYTES=1188 , REPLY: SRC=255.255.255.255 DST=192.168.0.170 PROTO=UDP SPT=17500 DPT=17500 PKTS=0 BYTES=0 
+Oct 16 14:15:54 lothlorien [DESTROY] ORIG: SRC=192.168.0.170 DST=255.255.255.255 PROTO=UDP SPT=17500 DPT=17500 PKTS=9 BYTES=1188 , 
+REPLY: SRC=255.255.255.255 DST=192.168.0.170 PROTO=UDP SPT=17500 DPT=17500 PKTS=0 BYTES=0 
 ```
 
 You may think that now I got the time information but you are WRONG. I need microsecond accurate time information and now I have only seconds besides I do not have year information.
