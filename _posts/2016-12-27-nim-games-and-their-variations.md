@@ -53,7 +53,7 @@ As you can see above, in a standard Nim game, the grundy number of a pile is equ
 
 Now consider the case that a player is allowed to not make a move on a pile resulting with passing his/her turn. Furthermore, consider that either of the players can make this **zero move** only once meaning if a player used zero move on a pile, neither of the players can use zero move on that pile anymore. How would our Grundy numbers would change with this slight change?
 
-If a zero move is applied to a pile we will underline it in terms of identification. If a pile is underline, since one can not make zero move on it, it will behave just like an ordinary pile.
+If a zero move is applied to a pile, we will underline it in terms of identification. If a pile is underlined, since none can make zero move on it, it will behave just like an ordinary pile.
 
 > G(0) = 0
 
