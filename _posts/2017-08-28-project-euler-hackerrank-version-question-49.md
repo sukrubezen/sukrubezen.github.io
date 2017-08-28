@@ -12,7 +12,7 @@ On the hackerrank version, it asks us to find 3 or 4 element prime sequences wit
 
 
 
-First thing we need to make is to generate primes up to 1000000, the upper bound, so we can only iterate on primes and we need to hash these as well since we will be needing to reverse check if a number is prime or not after we start generating numbers from same digit set. 
+First thing we need to make is to generate primes up to 1000000, the upper bound, so we can only iterate on primes and we need to hash these as well since we will be needing to reverse check if a number is prime or not after we start generating numbers from same digit set.
 
 To generate primes less than a spesific number we can use sieve of eranthoses, an ancient algorithm for finding primes up to a spesific limit. Below you can see the code.
 
@@ -34,7 +34,7 @@ def primes_sieve2(limit):
 
 Next thing is to find a way of generating numbers from a digit set and this generated number needs to be higher and higher since we need a constant difference between pairs.
 
-It seems this problem was a question of Google Code Jam in 2009 in round 1B, [Link to question-solution][https://code.google.com/codejam/contest/dashboard?c=186264#s=a&a=1]
+It seems this problem was a question of Google Code Jam in 2009 in round 1B, [Link to question-solution](https://code.google.com/codejam/contest/dashboard?c=186264#s=a&a=1)
 
 This algorithm finds the next highest number by using the digits of that number and algorithm is O(n). Code is below.
 
@@ -44,26 +44,26 @@ def next_highest(n):
     if n in dp: return dp[n]
     ll = map(int, list(str(n)))
 
-    for i in xrange(len(ll)-1, 0, -1):         
+    for i in xrange(len(ll)-1, 0, -1):
         if ll[i] > ll[i-1]:
             mon, monitr = None, None
             for j in xrange(i, len(ll)):
                 if ll[j] > ll[i-1] and (mon is None or mon >= ll[j]):
                     mon = ll[j]
                     monitr = j
-                    
+
             ll[i-1], ll[monitr] = ll[monitr], ll[i-1]
             s, e = i, len(ll)-1
             while s < e:
                 ll[s], ll[e] = ll[e], ll[s]
                 s += 1
                 e -= 1
-                
+
             now = ''.join(map(str, ll))
-            
+
             dp[n] = int(now)
             return int(now)
-    
+
     dp[n] = None
     return None
 ```
@@ -94,7 +94,7 @@ def solve(ll, K):
                                 sofar.append(str(p) + str(ll[i]) + str(ll[j]) + str(ll[k]))
                     else:
                         sofar.append(str(p) + str(ll[i]) + str(ll[j]))
-                
+
     return sofar
 ```
 
@@ -110,19 +110,19 @@ Finally we put it all together and solve the question.
 
 ``` python
 N, K = map(int, raw_input().split())
-    
+
 notgo = {}
 final = []
 for p in primes_sieve2(1000000)::
-    if p in notgo: continue 
+    if p in notgo: continue
     if p < 1000: continue
     if p >= N: break
-    
+
     kp = [p] # Holds the sequence
     res = p
     while True:
         res = next_highest(res)
-        if res is None: 
+        if res is None:
             break
         if res not in d: continue  # Check if the number is prime
         notgo[res] = 1 # Never visit that number again
