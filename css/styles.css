@@ -187,6 +187,10 @@ video {
   background-image:url(../img/github.png);
 }
 
+.icon.linkedin {
+  background-image:url(../img/social/linkedin.png);
+}
+
 .nav a {
   margin-right: 32px;
   margin-bottom: 32px;
